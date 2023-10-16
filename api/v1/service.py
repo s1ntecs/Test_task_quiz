@@ -17,7 +17,7 @@ router = APIRouter()
              status_code=status.HTTP_201_CREATED)
 async def save(question_data: QuestionData,
                save_service: SaveService = Depends(get_user_service)
-               ) -> Response:
+               ) -> Question:
     # Количество требуемых викторин
     count = question_data.questions_num
 
@@ -53,4 +53,4 @@ async def save(question_data: QuestionData,
         last_result = await save_service.get(quiz_id)
     except Exception:
         return Response(status_code=204)
-    return Response(status_code=201, content=last_result)
+    return last_result
