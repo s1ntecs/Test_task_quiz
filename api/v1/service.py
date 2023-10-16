@@ -14,7 +14,8 @@ router = APIRouter()
 
 @router.post('/quiz',
              description='get quiz',
-             status_code=status.HTTP_201_CREATED)
+             status_code=status.HTTP_201_CREATED,
+             response_model=None)
 async def save(question_data: QuestionData,
                save_service: SaveService = Depends(get_user_service)
                ) -> Question:
