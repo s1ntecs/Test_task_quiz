@@ -32,9 +32,7 @@ async def save(question_data: QuestionData,
         # Обнуляем количество необходимых новых викторин
         count = 0
         try:
-            for i, question_data in enumerate(questions_data):
-                if i % 100 == 0:
-                    await save_service.db_session.commit()
+            for question_data in questions_data:
                 # Проверяем наличие викторины в БД
                 existing_question = await save_service.is_exist(
                     question_data["id"])

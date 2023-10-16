@@ -11,6 +11,8 @@ class QuestionData(BaseModel):
     def check_questions_num(cls, value):
         if value <= 0:
             raise ValueError("questions_num должен быть больше 0")
+        if value > 100:
+            raise ValueError("questions_num не должен превышать 100")
         return value
 
 
